@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ResourcesController;
+use App\Http\Controllers\MathController;
+use App\Http\Controllers\MyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -100,3 +103,11 @@ Route::post('/posted', function () {
 Route::delete('/deleted', function () {
     return json_encode(['it is a' => 'delete route'], JSON_PRETTY_PRINT);
 });
+
+/* -- CONTROLLER -- */
+Route::get('products', [MyController::class, 'products']);
+
+Route::get('add/{n1}/{n2}', [MathController::class, 'add'])
+->where('n1', '[0-9]+')->where('n2', '[0-9]+');
+
+Route::resource('resources', ResourcesController::class);
