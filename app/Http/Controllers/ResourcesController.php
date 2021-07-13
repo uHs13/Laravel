@@ -85,9 +85,11 @@ class ResourcesController extends Controller
      */
     public function show(int $id)
     {
+
         $person = session('people')[$id - 1];
 
         return view('people-details')->with('person', $person);
+
     }
 
     /**
@@ -98,7 +100,11 @@ class ResourcesController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $person = session('people')[$id - 1];
+
+        return view('people-edit')->with('person', $person);
+
     }
 
     /**
@@ -110,7 +116,19 @@ class ResourcesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $people = session('people');
+
+        $person = $people[$id - 1];
+
+        $person['name'] = $request->name;
+
+        $people[$id - 1] = $person;
+
+        session(['people' => $people]);
+
+        return redirect()->route('resources.index');
+
     }
 
     /**
@@ -121,6 +139,14 @@ class ResourcesController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $people = session('people');
+
+        unset($people[$id - 1]);
+
+        session(['people' => $people]);
+
+        return redirect()->route('resources.index');
+
     }
 }

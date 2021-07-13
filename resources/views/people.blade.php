@@ -24,6 +24,11 @@
                             <div>
                                 <a href="{{route('resources.edit', $person['id'])}}">Edit</a>
                                 <a href="{{route('resources.show', $person['id'])}}">Details</a>
+                                <form method="POST" action="{{route('resources.destroy', $person['id'])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>Delete</button>
+                                </form>
                             </div>
                         </li>
                     @endforeach

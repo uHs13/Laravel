@@ -9,14 +9,15 @@
 <body>
     <main>
         <section>
-            <form method='POST' action="{{route('resources.store')}}">
+            <form action="{{route('resources.update', $person['id'])}}" method="POST">
                 @csrf
+                @method('PUT')
                 <div>
-                    <h3>New Person</h3>
+                    <h3>Edit Person</h3>
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" name='name' autofocus>
+                    <input type="text" name='name' value="{{$person['name']}}">
                 </div>
                 <div>
                     <button>Save</button>
