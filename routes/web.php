@@ -111,3 +111,17 @@ Route::get('add/{n1}/{n2}', [MathController::class, 'add'])
 ->where('n1', '[0-9]+')->where('n2', '[0-9]+');
 
 Route::resource('resources', ResourcesController::class);
+
+Route::get('/countries', function () {
+    return view('country.country');
+})->name('countries');
+
+Route::get('/products', function () {
+    return view('product.product');
+})->name('products');
+
+Route::get('/options/{opt?}', function ($opt = null) {
+    return view('options.options', [
+        'option' => $opt
+    ]);
+})->name('options')->where('opt', '[0-9]+');

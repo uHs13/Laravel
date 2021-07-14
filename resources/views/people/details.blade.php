@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>People</title>
-</head>
-<body>
-    <main>
+@extends('layouts.index')
+
+@section('title', 'Show Person')
+
+@section('content')
         <section>
             <div>
                 <label for="id">Id</label>
@@ -21,6 +16,4 @@
                 <a href="{{route('resources.index')}}">Back</a>
             </div>
         </section>
-    </main>
-</body>
-</html>
+@stop

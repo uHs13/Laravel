@@ -40,7 +40,10 @@ class ResourcesController extends Controller
      */
     public function index()
     {
-        return view('people')->with('people', session('people'));
+        /*return view('people.index')->with('people', session('people')); old way*/
+        return view('people.list', [
+            'people' => session('people')
+        ]);
     }
 
     /**
@@ -50,7 +53,7 @@ class ResourcesController extends Controller
      */
     public function create()
     {
-        return view('people-create');
+        return view('people.create');
     }
 
     /**
@@ -88,7 +91,9 @@ class ResourcesController extends Controller
 
         $person = session('people')[$id - 1];
 
-        return view('people-details')->with('person', $person);
+        return view('people.details', [
+            'person' => $person
+        ]);
 
     }
 
@@ -103,7 +108,9 @@ class ResourcesController extends Controller
 
         $person = session('people')[$id - 1];
 
-        return view('people-edit')->with('person', $person);
+        return view('people.edit', [
+            'person' => $person
+        ]);
 
     }
 
