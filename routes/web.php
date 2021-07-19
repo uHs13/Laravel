@@ -125,3 +125,7 @@ Route::get('/options/{opt?}', function ($opt = null) {
         'option' => $opt
     ]);
 })->name('options')->where('opt', '[0-9]+');
+
+Route::get('/bootstrap', function () {
+    return view('bootstrap.example');
+});
